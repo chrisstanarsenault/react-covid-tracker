@@ -13,7 +13,7 @@ export default function CountryCard(props) {
   });
 
   useEffect(() => {
-    const fetchGlobalData = async () => {
+    const fetchCountryData = async () => {
       // daily api is currently down, uncomment when working again and remove single fetch request
       // const urls = [
       //   "https://covid19.mathdro.id/api/",
@@ -25,7 +25,7 @@ export default function CountryCard(props) {
       //   resJson = resJson.map((e) => {
       //     return e;
       //   });
-      //   setGlobalApiData({ countryData: resJson[0], dailyData: resJson[1] });
+      //   setCountryApiData({ countryData: resJson[0], dailyData: resJson[1] });
       // } catch (err) {
       //   console.log(err);
       // }
@@ -33,7 +33,7 @@ export default function CountryCard(props) {
         .then((response) => response.json())
         .then((data) => setCountryApiData({ countryData: data }));
     };
-    fetchGlobalData();
+    fetchCountryData();
   }, []);
 
   return (
