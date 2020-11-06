@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function ProvinceStateList(props) {
-  const { selectedCountry } = props;
+  const { selectedCountry, getSelectedProvinceData } = props;
   const [provStates, setProvStates] = useState([]);
 
   useEffect(() => {
@@ -10,9 +10,6 @@ export default function ProvinceStateList(props) {
     )
       .then((response) => response.json())
       .then((data) => {
-        if (provStates.length !== 0) {
-          setProvStates([]);
-        }
         data.forEach((i) => setProvStates((prev) => [...prev, i]));
       });
   }, [selectedCountry]);
@@ -22,7 +19,7 @@ export default function ProvinceStateList(props) {
       return (
         <option
           key={`${provState.admin2}-option-${index}`}
-          value={`${provState.admin2.toLowerCase()}`}
+          value={`${provState.admin2}`}
         >
           {provState.admin2}
         </option>
@@ -31,7 +28,7 @@ export default function ProvinceStateList(props) {
       return (
         <option
           key={`${provState.provinceState}-option-${index}`}
-          value={`${provState.provinceState.toLowerCase()}`}
+          value={`${provState.provinceState}`}
         >
           {provState.provinceState}
         </option>
@@ -42,7 +39,12 @@ export default function ProvinceStateList(props) {
   };
   return (
     <form>
-      <select>
+      <label htmlFor="provinces">Choose a province: </label>
+      <select
+        name="provinces"
+        id="provinces"
+        onChange={getSelectedProvinceData}
+      >
         <option>----------</option>
         {provStates.length !== 0 &&
           provStates.map((provState, index) =>

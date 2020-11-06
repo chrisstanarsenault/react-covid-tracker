@@ -42,9 +42,9 @@ export default function CountryCard() {
         <p>Loading...</p>
       ) : (
         <Fragment>
-          <Confirmed confirmed={globalApiData.globalData.confirmed} />
-          <Recovered recovered={globalApiData.globalData.recovered} />
-          <Deaths deaths={globalApiData.globalData.deaths} />
+          <Confirmed confirmed={globalApiData.globalData.confirmed.value} />
+          <Recovered recovered={globalApiData.globalData.recovered.value} />
+          <Deaths deaths={globalApiData.globalData.deaths.value} />
         </Fragment>
       )}
     </section>
