@@ -14,7 +14,7 @@ export default function ProvinceCard(props) {
           Stats for:{" "}
           <span className="text-4xl">{provinceData.provinceState}</span>
         </h3>
-        <article className="flex xl:flex-row justify-center xl:space-x-32 p-4 xs:flex-col xs:space-x-0 xs:space-y-10">
+        <article className="flex xl:flex-row xs:flex-col justify-center xl:space-x-32 xs:space-x-0 xl:space-y-0 p-4 xs:space-y-10">
           <Confirmed confirmed={addCommas(provinceData.confirmed)} />
           <Recovered recovered={addCommas(provinceData.recovered)} />
           <Deaths deaths={addCommas(provinceData.deaths)} />

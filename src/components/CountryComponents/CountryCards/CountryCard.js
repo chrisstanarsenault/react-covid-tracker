@@ -75,7 +75,7 @@ export default function CountryCard(props) {
               getSelectedProvinceData={getSelectedProvinceData}
             />
           )}
-          <div className="flex xl:flex-row justify-center xl:space-x-32 p-4 xs:flex-col xs:space-x-0 xs:space-y-10">
+          <div className="flex xl:flex-row xs:flex-col justify-center xl:space-x-32 xs:space-x-0 xl:space-y-0 p-4 xs:space-y-10">
             <Confirmed
               confirmed={addCommas(
                 selectedCountryData.countryData.confirmed.value
