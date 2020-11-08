@@ -58,8 +58,10 @@ export default function CountryCard(props) {
   }, [selectedCountryData, selectedProvince]);
 
   return (
-    <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 bg-white">
-      <h2 className="text-4xl font-bold">Specific Country Information</h2>
+    <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 mx-2 bg-white">
+      <h2 className="text-4xl font-bold mt-4 xs:text-center">
+        Specific Country Information
+      </h2>
       <CountryListInput
         getSelectedCountry={getSelectedCountry}
         countryList={countryList}

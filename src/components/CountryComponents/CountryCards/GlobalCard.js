@@ -37,7 +37,7 @@ export default function CountryCard(props) {
   }, []);
 
   return (
-    <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 bg-white">
+    <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 bg-white mx-2">
       <h2 className="text-4xl font-bold mt-3">Global Information</h2>
       {/* !globalApiData.dailyData <-- api currently down, add back in to ternary when working*/}
       {!globalApiData.globalData ? (

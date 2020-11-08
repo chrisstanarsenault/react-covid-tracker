@@ -38,7 +38,7 @@ export default function ProvinceStateList(props) {
     }
   };
   return (
-    <form className="text-xl mt-3 mb-5">
+    <form className="text-xl mt-3 mb-5 xs:mx-3 xs:flex xs:flex-col xs:items-center">
       <label htmlFor="provinces">Choose a province: </label>
       <select
         className="border border-black"

@@ -3,7 +3,7 @@ import React from "react";
 export default function CountryListInput(props) {
   const { countryList, getSelectedCountry } = props;
   return (
-    <form className="text-xl mt-5 mb-5">
+    <form className="text-xl my-5 xs:mx-3 xs:flex xs:flex-col xs:items-center">
       <label htmlFor="countries">Choose a country: </label>
       <select
         className="border border-black"
