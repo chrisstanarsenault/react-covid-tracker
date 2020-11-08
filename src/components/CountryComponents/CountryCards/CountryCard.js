@@ -55,7 +55,7 @@ export default function CountryCard(props) {
           setSelectedProvinceData([]);
         }
       });
-  }, [selectedCountryData]);
+  }, [selectedCountryData, selectedProvince]);
 
   return (
     <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 bg-white">
