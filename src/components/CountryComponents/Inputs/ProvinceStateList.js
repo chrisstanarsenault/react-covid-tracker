@@ -38,14 +38,15 @@ export default function ProvinceStateList(props) {
     }
   };
   return (
-    <form>
+    <form className="text-xl mt-3 mb-5">
       <label htmlFor="provinces">Choose a province: </label>
       <select
+        className="border border-black"
         name="provinces"
         id="provinces"
         onChange={getSelectedProvinceData}
       >
-        <option>----------</option>
+        <option>--------------</option>
         {provStates.length !== 0 &&
           provStates.map((provState, index) =>
             getOptionsToShow(provState, index)

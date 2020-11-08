@@ -3,9 +3,14 @@ import React from "react";
 export default function CountryListInput(props) {
   const { countryList, getSelectedCountry } = props;
   return (
-    <form>
+    <form className="text-xl mt-5 mb-5">
       <label htmlFor="countries">Choose a country: </label>
-      <select name="countries" id="countries" onChange={getSelectedCountry}>
+      <select
+        className="border border-black"
+        name="countries"
+        id="countries"
+        onChange={getSelectedCountry}
+      >
         <option value="----------">----------</option>
         {countryList.length !== 0 &&
           countryList.countries.map((country) => {

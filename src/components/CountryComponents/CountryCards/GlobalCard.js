@@ -4,7 +4,9 @@ import Confirmed from "./Confirmed";
 import Recovered from "./Recovered";
 import Deaths from "./Deaths";
 
-export default function CountryCard() {
+export default function CountryCard(props) {
+  const { addCommas } = props;
+
   const [globalApiData, setGlobalApiData] = useState({
     globalData: null,
     dailyData: null,
@@ -35,17 +37,21 @@ export default function CountryCard() {
   }, []);
 
   return (
-    <section>
-      <h2>Global Information</h2>
+    <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 bg-white">
+      <h2 className="text-4xl font-bold mt-3">Global Information</h2>
       {/* !globalApiData.dailyData <-- api currently down, add back in to ternary when working*/}
       {!globalApiData.globalData ? (
         <p>Loading...</p>
       ) : (
-        <Fragment>
-          <Confirmed confirmed={globalApiData.globalData.confirmed.value} />
-          <Recovered recovered={globalApiData.globalData.recovered.value} />
-          <Deaths deaths={globalApiData.globalData.deaths.value} />
-        </Fragment>
+        <div className="flex xl:flex-row justify-center xl:space-x-32 p-4 xs:flex-col xs:space-x-0 xs:space-y-10">
+          <Confirmed
+            confirmed={addCommas(globalApiData.globalData.confirmed.value)}
+          />
+          <Recovered
+            recovered={addCommas(globalApiData.globalData.recovered.value)}
+          />
+          <Deaths deaths={addCommas(globalApiData.globalData.deaths.value)} />
+        </div>
       )}
     </section>
   );

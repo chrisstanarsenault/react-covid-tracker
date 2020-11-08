@@ -7,7 +7,9 @@ import ProvinceCard from "./ProvinceCard";
 import CountryListInput from "../Inputs/CountryListInput";
 import ProvinceStateList from "../Inputs/ProvinceStateList";
 
-export default function CountryCard() {
+export default function CountryCard(props) {
+  const { addCommas } = props;
+
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedCountryData, setSelectedCountryData] = useState({
@@ -49,36 +51,52 @@ export default function CountryCard() {
       .then((response) => response.json())
       .then((data) => {
         setCountryList(data);
+        if (selectedProvince) {
+          setSelectedProvinceData([]);
+        }
       });
-  }, []);
+  }, [selectedCountryData]);
 
   return (
-    <section>
-      <h2>Specific Country Information</h2>
+    <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 bg-white">
+      <h2 className="text-4xl font-bold">Specific Country Information</h2>
       <CountryListInput
         getSelectedCountry={getSelectedCountry}
         countryList={countryList}
       />
       {selectedCountryData.countryData && (
         <Fragment>
-          <h3>Stats For: {selectedCountry}</h3>
+          <h3 className="text-3xl">
+            Stats For: <span className="text-4xl">{selectedCountry}</span>
+          </h3>
           {selectedCountry === "Canada" && (
             <ProvinceStateList
               selectedCountry={selectedCountry}
               getSelectedProvinceData={getSelectedProvinceData}
             />
           )}
-          <Confirmed
-            confirmed={selectedCountryData.countryData.confirmed.value}
-          />
-          <Recovered
-            recovered={selectedCountryData.countryData.recovered.value}
-          />
-          <Deaths deaths={selectedCountryData.countryData.deaths.value} />
+          <div className="flex xl:flex-row justify-center xl:space-x-32 p-4 xs:flex-col xs:space-x-0 xs:space-y-10">
+            <Confirmed
+              confirmed={addCommas(
+                selectedCountryData.countryData.confirmed.value
+              )}
+            />
+            <Recovered
+              recovered={addCommas(
+                selectedCountryData.countryData.recovered.value
+              )}
+            />
+            <Deaths
+              deaths={addCommas(selectedCountryData.countryData.deaths.value)}
+            />
+          </div>
         </Fragment>
       )}
       {Object.keys(selectedProvinceData).length !== 0 && (
-        <ProvinceCard provinceData={selectedProvinceData} />
+        <ProvinceCard
+          provinceData={selectedProvinceData}
+          addCommas={addCommas}
+        />
       )}
     </section>
   );
