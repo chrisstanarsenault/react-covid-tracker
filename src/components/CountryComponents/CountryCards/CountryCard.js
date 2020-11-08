@@ -55,7 +55,8 @@ export default function CountryCard(props) {
           setSelectedProvinceData([]);
         }
       });
-  }, [selectedCountryData, selectedProvince]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCountryData]);
 
   return (
     <section className="border-2 rounded shadow-lg flex flex-col items-center mt-10 mb-5 mx-2 bg-white">
